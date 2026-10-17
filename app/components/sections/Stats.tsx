@@ -27,15 +27,34 @@ function useCounter(to: number, duration = 2000) {
   return { val, ref };
 }
 
-function StatBlock({ value, suffix, label, sub, alt }: { value: number; suffix: string; label: string; sub: string; alt: boolean }) {
+function StatBlock({ value, suffix, label, sub }: { value: number; suffix: string; label: string; sub: string }) {
   const { val, ref } = useCounter(value);
   return (
-    <div ref={ref} className="py-12 px-8 text-center" style={{ backgroundColor: alt ? "#F8F6F1" : "#fff" }}>
-      <div className="mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 300, color: "#1A1A1A", letterSpacing: "-0.02em" }}>
+    <div ref={ref} className="py-12 px-8 text-center">
+      <div
+        className="mb-2"
+        style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "clamp(2.5rem, 5vw, 4rem)",
+          fontWeight: 300,
+          color: "var(--accent)",
+          letterSpacing: "-0.02em",
+        }}
+      >
         {val}{suffix}
       </div>
-      <div className="text-sm font-medium mb-1" style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A1A1A" }}>{label}</div>
-      <div className="text-xs" style={{ fontFamily: "'DM Sans', sans-serif", color: "#9A9A9A" }}>{sub}</div>
+      <div
+        className="text-sm font-medium mb-1"
+        style={{ fontFamily: "'DM Sans', sans-serif", color: "var(--bg-white)" }}
+      >
+        {label}
+      </div>
+      <div
+        className="text-xs"
+        style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,255,255,0.55)" }}
+      >
+        {sub}
+      </div>
     </div>
   );
 }
@@ -49,12 +68,15 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="py-20" style={{ backgroundColor: "#F8F6F1" }}>
+    <section className="py-20" style={{ backgroundColor: "var(--dark-bg)" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: "#E2DDD6" }}>
+        <div
+          className="grid grid-cols-2 lg:grid-cols-4 gap-px"
+          style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+        >
           {stats.map((s, i) => (
             <FadeUp key={i} delay={i * 0.1}>
-              <StatBlock {...s} alt={i % 2 !== 0} />
+              <StatBlock {...s} />
             </FadeUp>
           ))}
         </div>

@@ -1,98 +1,173 @@
 "use client";
+
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
-  const go = (href: string) => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ backgroundColor: "#0f0f0f" }}>
-      {/* World map SVG */}
-      <div className="absolute inset-0 flex items-center justify-center" style={{ opacity: 0.09 }}>
-        <svg viewBox="0 0 1000 500" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <g stroke="#ffffff" strokeWidth="0.6" fill="rgba(255,255,255,0.04)">
-            <path d="M 120 80 L 240 60 L 280 100 L 260 160 L 220 200 L 160 220 L 100 180 L 80 130 Z" />
-            <path d="M 180 240 L 240 230 L 260 300 L 240 380 L 200 420 L 170 380 L 150 300 Z" />
-            <path d="M 430 60 L 510 50 L 540 100 L 510 140 L 450 150 L 420 120 L 410 80 Z" />
-            <path d="M 440 160 L 520 150 L 550 200 L 540 320 L 490 380 L 440 340 L 420 260 L 420 190 Z" />
-            <path d="M 540 50 L 760 40 L 820 100 L 800 180 L 720 200 L 620 220 L 540 180 L 520 120 Z" />
-            <path d="M 720 280 L 820 260 L 850 320 L 820 360 L 760 370 L 720 330 Z" />
-            <path d="M 610 145 L 660 135 L 675 195 L 650 255 L 615 245 L 600 195 Z" />
-          </g>
-          {[0,100,200,300,400].map(y=><line key={y} x1="0" y1={y} x2="1000" y2={y} stroke="#fff" strokeWidth="0.2" strokeDasharray="3 9"/>)}
-          {[0,125,250,375,500,625,750,875,1000].map(x=><line key={x} x1={x} y1="0" x2={x} y2="500" stroke="#fff" strokeWidth="0.2" strokeDasharray="3 9"/>)}
-          {[[150,120],[480,90],[640,170],[750,130],[200,280],[530,200],[820,300],[300,150],[700,200],[635,180]].map(([cx,cy],i)=>(
-            <circle key={i} cx={cx} cy={cy} r="3.5" fill="rgba(255,255,255,0.6)" />
-          ))}
-          <line x1="150" y1="120" x2="480" y2="90" stroke="rgba(255,255,255,0.18)" strokeWidth="1" strokeDasharray="6 6"/>
-          <line x1="480" y1="90" x2="635" y2="180" stroke="rgba(255,255,255,0.18)" strokeWidth="1" strokeDasharray="6 6"/>
-          <line x1="635" y1="180" x2="750" y2="130" stroke="rgba(255,255,255,0.18)" strokeWidth="1" strokeDasharray="6 6"/>
-          <line x1="200" y1="280" x2="530" y2="200" stroke="rgba(255,255,255,0.18)" strokeWidth="1" strokeDasharray="6 6"/>
-          <line x1="530" y1="200" x2="820" y2="300" stroke="rgba(255,255,255,0.18)" strokeWidth="1" strokeDasharray="6 6"/>
-          <line x1="300" y1="150" x2="150" y2="120" stroke="rgba(255,255,255,0.18)" strokeWidth="1" strokeDasharray="6 6"/>
-        </svg>
+    <section
+      id="home"
+      className="relative min-h-[85vh] lg:min-h-[92vh] flex items-center overflow-hidden"
+    >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-agriculture.png"
+          alt="Agricultural commodities warehouse and global trade"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
       </div>
 
-      {/* Subtle gradient overlay */}
-      <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,0.5) 100%)" }} />
+      {/* Dark Overlay — darker on the left */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.25) 100%)",
+        }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} className="mb-6">
-          <span className="text-xs tracking-widest uppercase text-white" style={{ opacity: 0.4, fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.4em" }}>
-            Phaltan, India · Worldwide Trading
+      {/* Content — pinned to the LEFT of the screen */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative z-20 w-full pl-6 sm:pl-10 lg:pl-16 xl:pl-24 pr-6 py-24 text-left" // ← CHANGED: removed mx-auto/max-w-6xl, added left padding
+      >
+        {/* Small heading */}
+        <motion.div variants={itemVariants} className="mb-5">
+          <span
+            className="inline-block text-[13px] md:text-[14px] font-semibold uppercase"
+            style={{
+              color: "#D4A843",
+              fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
+              letterSpacing: "2px",
+            }}
+          >
+            Welcome to IB Import Export
           </span>
         </motion.div>
 
+        {/* Main heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="text-white mb-8"
-          style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3rem, 6vw, 5.5rem)", fontWeight: 300, lineHeight: 1.1 }}
+          variants={itemVariants}
+          className="text-white mb-6 md:mb-8 max-w-[850px] text-left"
+          style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontSize: "clamp(2.25rem, 5vw, 4.25rem)",
+            fontWeight: 700,
+            lineHeight: 1.1,
+          }}
         >
-          Connecting Markets.<br />
-          <em>Delivering Global</em><br />
-          Trade Excellence.
+          Connecting Indian Agriculture
+          <br className="hidden sm:block" /> to Global Markets
         </motion.h1>
 
+        {/* Description */}
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.5 }}
-          className="mx-auto mb-12 text-base lg:text-lg font-light leading-relaxed max-w-2xl"
-          style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,255,255,0.55)" }}
+          variants={itemVariants}
+          className="mb-10 md:mb-12 max-w-[650px] text-left leading-[1.7]"
+          style={{
+            fontFamily: "'DM Sans', 'Segoe UI', sans-serif",
+            fontSize: "clamp(0.95rem, 1.2vw, 1.125rem)",
+            color: "#E5E7EB",
+          }}
         >
-          IB Import Export bridges global markets with precision and integrity. From agricultural produce to advanced machinery, we facilitate seamless international trade across continents.
+          IB Import Export is an import-export company based in Phaltan,
+          Maharashtra, connecting quality agricultural products with domestic
+          and international markets through reliable sourcing and professional
+          trading solutions.
         </motion.p>
 
+        {/* Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.75 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row gap-4 justify-start items-start"
         >
-          <button
-            onClick={() => go("#contact")}
-            className="px-8 py-4 text-xs tracking-widest uppercase font-medium transition-all duration-300 hover:opacity-90"
-            style={{ backgroundColor: "#fff", color: "#1A1A1A", fontFamily: "'DM Sans', sans-serif", minWidth: "180px" }}
-          >Contact Us</button>
-          <button
-            onClick={() => go("#services")}
-            className="px-8 py-4 text-xs tracking-widest uppercase transition-all duration-300 hover:bg-white/10"
-            style={{ border: "1px solid rgba(255,255,255,0.35)", color: "#fff", fontFamily: "'DM Sans', sans-serif", minWidth: "200px" }}
-          >Global Trade Solutions</button>
-        </motion.div>
+          <Link
+            href="/products"
+            className="group inline-flex items-center justify-center gap-2 h-[52px] px-8 text-sm font-semibold uppercase tracking-wider transition-all duration-300 hover:brightness-110"
+            style={{
+              backgroundColor: "#D4A843",
+              color: "#1B4332",
+              fontFamily: "'DM Sans', sans-serif",
+              borderRadius: "4px",
+              minWidth: "220px",
+            }}
+          >
+            Explore Our Products
+            <ArrowRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        >
-          <span className="text-xs tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.25)", fontFamily: "'DM Sans', sans-serif" }}>Scroll</span>
-          <motion.div animate={{ y: [0, 8, 0] }} transition={{ repeat: Infinity, duration: 2 }} className="w-px h-8" style={{ backgroundColor: "rgba(255,255,255,0.2)" }} />
+          <Link
+            href="/contact"
+            className="group inline-flex items-center justify-center gap-2 h-[52px] px-8 text-sm font-semibold uppercase tracking-wider transition-all duration-300 hover:bg-white/10"
+            style={{
+              border: "1.5px solid rgba(255,255,255,0.6)",
+              color: "#FFFFFF",
+              fontFamily: "'DM Sans', sans-serif",
+              borderRadius: "4px",
+              minWidth: "200px",
+            }}
+          >
+            Contact Us
+            <ArrowRight
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </Link>
         </motion.div>
-      </div>
-    </section>
+      </motion.div>
+
+      {/* Scroll Indicator — aligned with content left padding */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-6 sm:left-10 lg:left-16 xl:left-24 z-20 flex flex-col items-start gap-2" // ← CHANGED
+      >
+        <span
+          className="text-[11px] uppercase tracking-[0.3em]"
+          style={{
+            color: "rgba(255,255,255,0.4)",
+            fontFamily: "'DM Sans', sans-serif",
+          }}
+        >
+          Scroll
+        </span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-px h-8"
+          style={{ backgroundColor: "rgba(255,255,255,0.3)" }}
+        />
+      </motion.div>
+    </section>  
   );
 }

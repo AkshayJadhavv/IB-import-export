@@ -3,8 +3,20 @@
 @tailwind utilities;
 
 :root {
+  /* Fonts */
   --font-display: 'Cormorant Garamond', serif;
   --font-body: 'DM Sans', sans-serif;
+
+  /* IB Import Export — brand palette */
+  --primary: #1B4332;       /* Deep Forest Green */
+  --secondary: #2D6A4F;     /* Natural Green */
+  --accent: #D4A843;        /* Premium Gold */
+  --bg-white: #FFFFFF;      /* Pure White */
+  --bg-cream: #F8F7F2;      /* Warm Cream */
+  --dark-bg: #102A23;       /* Deep Dark Green */
+  --heading: #1F2933;       /* Dark Charcoal */
+  --body: #64748B;          /* Slate Gray */
+  --border: #E5E7EB;        /* Light Gray */
 }
 
 html { scroll-behavior: smooth; }
