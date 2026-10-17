@@ -19,7 +19,7 @@ export default function Hero() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
 
@@ -55,7 +55,7 @@ export default function Hero() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-20 w-full pl-6 sm:pl-10 lg:pl-16 xl:pl-24 pr-6 py-24 text-left" // ← CHANGED: removed mx-auto/max-w-6xl, added left padding
+        className="relative z-20 w-full pl-6 sm:pl-10 lg:pl-16 xl:pl-24 pr-6 py-24 text-left"
       >
         {/* Small heading */}
         <motion.div variants={itemVariants} className="mb-5">
@@ -150,7 +150,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-6 sm:left-10 lg:left-16 xl:left-24 z-20 flex flex-col items-start gap-2" // ← CHANGED
+        className="absolute bottom-8 left-6 sm:left-10 lg:left-16 xl:left-24 z-20 flex flex-col items-start gap-2"
       >
         <span
           className="text-[11px] uppercase tracking-[0.3em]"
@@ -168,6 +168,6 @@ export default function Hero() {
           style={{ backgroundColor: "rgba(255,255,255,0.3)" }}
         />
       </motion.div>
-    </section>  
+    </section>
   );
 }
