@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { getProduct, products, productHref } from "@/app/data/products";
 import { SITE_LOCATION, SITE_NAME, SITE_URL } from "@/app/lib/site";
 import ProductDetails, { ProductDescription } from "@/app/components/products/ProductDetails";
-import ProductSpecifications from "@/app/components/products/ProductSpecifications";
 import ProductEnquiry from "@/app/components/products/ProductEnquiry";
 import RelatedProducts from "@/app/components/products/RelatedProducts";
 import JsonLd from "@/app/components/products/JsonLd";
@@ -42,7 +41,6 @@ export default async function ProductPage({ params }: Props) {
   return (
     <main>
       <ProductDetails product={product} />
-      <ProductSpecifications product={product} />
       <ProductDescription product={product} />
       <ProductEnquiry product={product} />
       <RelatedProducts product={product} />

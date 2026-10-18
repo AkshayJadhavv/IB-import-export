@@ -169,14 +169,14 @@ export default function Footer() {
                 className="text-sm font-light leading-relaxed"
                 style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,255,255,0.7)" }}
               >
-                Main Market, Phaltan
+                Anand nagar,Phaltan
                 <br />
                 Satara, Maharashtra 415523
                 <br />
                 India
               </p>
               <a
-                href="tel:+919876543210"
+                href="tel:+917499280907"
                 className="block text-sm font-light transition-opacity hover:opacity-100"
                 style={{
                   fontFamily: "'DM Sans', sans-serif",

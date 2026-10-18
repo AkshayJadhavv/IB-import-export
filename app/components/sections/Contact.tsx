@@ -57,7 +57,7 @@ export default function Contact() {
                       style={{ fontFamily: "'DM Sans', sans-serif", color: "var(--heading)" }}
                     >
                       IB Import Export<br />
-                      Main Market, Phaltan<br />
+                      Anand nagar,Phaltan <br />
                       Satara District, Maharashtra 415523<br />
                       India
                     </p>
@@ -110,7 +110,7 @@ export default function Contact() {
                     className="text-sm font-light break-all transition-colors duration-200 hover:opacity-70"
                     style={{ fontFamily: "'DM Sans', sans-serif", color: "var(--heading)", textDecoration: "none" }}
                   >
-                    info@ibimportexport.com
+                    ibimex2228@gmail.com
                   </a>
                 </div>
               </div>
