@@ -5,7 +5,7 @@ import Services from "./components/sections/Services";
 import Products from "./components/sections/Products";
 import WhyUs from "./components/sections/WhyUs";
 //import GlobalPresence from "./components/sections/GlobalPresence";
-import Stats from "./components/sections/Stats";
+//import Stats from "./components/sections/Stats";
 //import Gallery from "./components/sections/Gallery";
 import Inquiry from "./components/sections/Inquiry";
 import Contact from "./components/sections/Contact";
@@ -20,7 +20,7 @@ export default function Home() {
       <Services />
       <Products />
       <WhyUs />
-      <Stats />
+      {/* <Stats /> */}
       {/* <GlobalPresence />
       <Gallery /> */}
       <Inquiry />

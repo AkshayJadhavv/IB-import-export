@@ -4,10 +4,10 @@ import FadeUp from "../ui/FadeUp";
 import { Globe, ShieldCheck, TrendingUp, Headphones, Clock } from "lucide-react";
 
 const reasons = [
-  { icon: Globe, title: "Global Network", desc: "Established relationships with verified buyers and suppliers across Asia, Europe, the Americas, Africa, and Oceania." },
+  { icon: Globe, title: "Global Network", desc: "Established relationships with verified buyers and suppliers across international markets." },
   { icon: ShieldCheck, title: "Quality Focused", desc: "Rigorous quality checks and compliance with international trade standards on every shipment we handle." },
-  { icon: TrendingUp, title: "Competitive Trade", desc: "Leveraging market intelligence and our supplier network to offer competitive pricing without compromising quality." },
-  { icon: Headphones, title: "Dedicated Support", desc: "Responsive account management and multilingual support for smooth communication across time zones." },
+  { icon: TrendingUp, title: "Competitive Trade", desc: "Market intelligence and our supplier network help us offer fair pricing without compromising on quality — whether you're ordering for the first time or scaling up." },
+  { icon: Headphones, title: "Dedicated Support", desc: "Responsive account management and multilingual support, with clear guidance for buyers new to international trade." },
   { icon: Clock, title: "Timely Delivery", desc: "We uphold delivery schedules with precision, ensuring your supply chain runs uninterrupted at all times." },
 ];
 
